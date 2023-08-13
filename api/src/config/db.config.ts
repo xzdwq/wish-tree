@@ -1,6 +1,6 @@
 import validateConfig from '@/common/validate/validate.config';
 import { registerAs } from '@nestjs/config';
-import { IsInt, IsString, Max, Min, ValidateIf } from 'class-validator';
+import { IsInt, IsString, Max, Min } from 'class-validator';
 import { LoggerOptions } from 'typeorm';
 
 export type DatabaseConfig = {
@@ -16,29 +16,23 @@ export type DatabaseConfig = {
 };
 
 class EnvironmentVariablesValidator {
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsString()
   DB_TYPE: string;
 
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsString()
   DB_HOST: string;
 
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsInt()
   @Min(0)
   @Max(65535)
   DB_PORT: number;
 
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsString()
   DB_USER: string;
 
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsString()
   DB_PASSWORD: string;
 
-  @ValidateIf((envValues) => !envValues.DB_HOST)
   @IsString()
   DB_NAME: string;
 }
