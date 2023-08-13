@@ -1,0 +1,7 @@
+FROM nginx:stable-alpine as prod-stage
+
+COPY --from=wish-tree /wish-tree/app/dist /usr/share/nginx/html
+COPY docker/development/default.conf /etc/nginx/conf.d/default.conf
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 4445

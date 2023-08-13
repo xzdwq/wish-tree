@@ -1,0 +1,22 @@
+{
+  "name": "wish-tree-monorepo",
+  "private": true,
+  "workspaces": [
+    "./api/*",
+    "./app/*"
+  ],
+  "scripts": {
+    "dev": "pnpm run -r --parallel --stream dev",
+    "api:build": "pnpm --filter=@wish-tree/api build",
+    "api:start:prod": "pnpm --filter=@wish-tree/api start:prod",
+    "api:migrate:generate": "pnpm --filter=@wish-tree/api migrate:generate",
+    "api:migrate:create": "pnpm --filter=@wish-tree/api migrate:create",
+    "api:migrate:run": "pnpm --filter=@wish-tree/api migrate:run",
+    "app:build": "pnpm --filter=@wish-tree/app build"
+  },
+  "engines": {
+    "node": ">=16.18.1",
+    "pnpm": ">=8.5.0"
+  },
+  "packageManager": "pnpm@8.5.0"
+}

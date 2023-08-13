@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  wish-tree:
+    image: wish-tree:latest
+    container_name: wish-tree
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+    ports:
+      - 7000:7000
+    env_file:
+      - '../../api/.env'
+    environment:
+      DB_HOST: host.docker.internal
+
+  wish-tree-ui:
+    image: nginx:latest
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile.nginx
+    ports:
+      - 4445:80
+    depends_on:
+      - wish-tree
