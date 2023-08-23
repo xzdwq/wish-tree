@@ -3,6 +3,7 @@ import { AppService } from '@/app.service';
 import { HttpErrorFilter } from '@/common/filter/http-error.filter';
 import appConfig from '@/config/app.config';
 import dbConfig from '@/config/db.config';
+import authConfig from '@/config/auth.config';
 import { TypeOrmConfigService } from '@/db/typeorm-config.service';
 import { UserModule } from '@/user/users.module';
 import { ClassSerializerInterceptor, Module } from '@nestjs/common';
@@ -16,7 +17,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
-      load: [appConfig, dbConfig],
+      load: [appConfig, dbConfig, authConfig],
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
@@ -38,5 +39,6 @@ import { DataSource, DataSourceOptions } from 'typeorm';
       useClass: ClassSerializerInterceptor,
     },
   ],
+  exports: [],
 })
 export class AppModule {}

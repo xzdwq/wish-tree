@@ -15,10 +15,11 @@ services:
 
   wish-tree-ui:
     image: nginx:latest
+    container_name: wish-tree-ui
     build:
       context: ../../
       dockerfile: docker/development/Dockerfile.nginx
     ports:
-      - 4445:80
+      - 4444:80
     depends_on:
       - wish-tree

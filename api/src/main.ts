@@ -9,7 +9,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { useContainer } from 'class-validator';
-import { AppModule } from './app.module';
+import { AppModule } from '@/app.module';
 
 const logger = new Logger('NestApplication');
 
